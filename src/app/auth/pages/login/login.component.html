@@ -1,0 +1,20 @@
+<h2>Login</h2>
+<a href="{{ apiUrl }}/auth/login/federated/google"> Login with Google </a>
+<br />
+<br />
+<form [formGroup]="loginForm" (ngSubmit)="logIn()">
+  <div>
+    <label for="email">Email: </label>
+    <input type="email" formControlName="email" id="email" />
+  </div>
+  <div>
+    <label for="password">Password: </label>
+    <input type="password" formControlName="password" id="password" />
+  </div>
+  <button type="submit" [disabled]="isSubmitButtonDisabled$ | async">
+    Log in
+  </button>
+</form>
+<br />
+<br />
+<a routerLink="../register">Go to Register</a>

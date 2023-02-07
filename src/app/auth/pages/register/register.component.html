@@ -1,0 +1,33 @@
+<h2>Register</h2>
+<a href="{{ apiUrl }}/auth/login/federated/google"> Register with Google </a>
+<br />
+<br />
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+  <div>
+    <label for="name">Full name: </label>
+    <input type="name" formControlName="fullName" id="name" />
+    <p>Full name Errors</p>
+    <pre>{{ fullNameControl.errors | json }}</pre>
+  </div>
+  <div>
+    <label for="email">Email: </label>
+    <input type="email" formControlName="email" id="email" />
+    <p>Email Errors</p>
+    <pre>{{ emailControl.errors | json }}</pre>
+  </div>
+  <div>
+    <label for="password">Password: </label>
+    <input type="text" formControlName="password" id="password" />
+    <p>Password Errors</p>
+    <pre>{{ passwordControl.errors | json }}</pre>
+  </div>
+  <button type="submit" [disabled]="isSubmitButtonDisabled$ | async">
+    Register
+  </button>
+  <p>Allow button {{ isSubmitButtonDisabled$ | async | json }}</p>
+</form>
+<p>Errors</p>
+<pre>{{ registerForm.errors | json }}</pre>
+<br />
+<br />
+<a routerLink="../login">Go to Login</a>

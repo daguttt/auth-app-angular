@@ -1,0 +1,28 @@
+<h2>Profile</h2>
+
+<form [formGroup]="passwordChangeForm" (ngSubmit)="onChangePassword()">
+  <!-- New Password -->
+  <div>
+    <label for="newPassword">New Password</label>
+    <input type="text" formControlName="newPassword" id="newPassword" />
+    <br /><br />
+    <p>Errors</p>
+    <pre>{{ newPasswordControl.errors | json }}</pre>
+  </div>
+  <!-- Confirm Password-->
+  <div>
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="text" formControlName="confirmPassword" id="confirmPassword" />
+    <p>Errors</p>
+    <pre>{{ confirmPasswordControl.errors | json }}</pre>
+  </div>
+  <!-- Submit -->
+  <button type="submit" [disabled]="passwordChangeForm.invalid">
+    Change password
+  </button>
+</form>
+<p>Value</p>
+<pre>{{ passwordChangeForm.value | json }}</pre>
+
+<p>Errors</p>
+<pre>{{ passwordChangeForm.errors | json }}</pre>
