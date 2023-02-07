@@ -1,5 +1,7 @@
 <h2>Login</h2>
-<a href="{{ apiUrl }}/auth/login/federated/google"> Login with Google </a>
+<button [disabled]="isLoading$ | async" (click)="logInWithGoogle()">
+  Login with Google
+</button>
 <br />
 <br />
 <form [formGroup]="loginForm" (ngSubmit)="logIn()">

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { map } from 'rxjs';
+import { Observable, map, mergeMap } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
-import { environment } from 'src/environments/environment';
+import { LoadingService } from 'src/app/loading.service';
 import { emailValidators } from '../../constants/email-validators';
+import { logInWithGoogleUrl } from '../../constants/urls';
 
 @Component({
   selector: 'app-login',
@@ -18,18 +19,34 @@ export class LoginComponent {
     password: ['', [Validators.required]],
   });
 
-  apiUrl: string = environment.apiUrl;
+  logInWithGoogleUrl: string = logInWithGoogleUrl;
 
-  isSubmitButtonDisabled$ = this.loginForm.statusChanges.pipe(
-    map((status) => status === 'INVALID' || status === null)
-  );
+  isLoading$ = this.loadingService.isLoading$;
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {}
+  isSubmitButtonDisabled$: Observable<boolean> =
+    this.loginForm.statusChanges.pipe(
+      mergeMap((status) =>
+        this.isLoading$.pipe(
+          map((isLoading) => (isLoading ? 'PENDING' : status))
+        )
+      ),
+      map((status) => ['INVALID', 'PENDING', null].includes(status))
+    );
+
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private loadingService: LoadingService
+  ) {}
 
   logIn() {
     const credentials = this.loginForm.value;
     this.authService.logIn(credentials).subscribe({
       error: (err: Error) => window.alert(err.message),
     });
+  }
+  logInWithGoogle() {
+    this.loadingService.markLoading();
+    window.location.assign(this.logInWithGoogleUrl);
   }
 }

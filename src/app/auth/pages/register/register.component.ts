@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { map, timer } from 'rxjs';
+import { Observable, map, mergeMap, timer } from 'rxjs';
 
-import { environment } from 'src/environments/environment';
+import { LoadingService } from 'src/app/loading.service';
 import { validatorsForPasswords } from '../../constants/password-validators';
 import { emailValidators } from '../../constants/email-validators';
 import { AuthService } from '../../auth.service';
 import { RegisterCredentials } from '../../types/register-credentials.interface';
+import { logInWithGoogleUrl } from '../../constants/urls';
 
 @Component({
   selector: 'app-register',
@@ -32,14 +33,19 @@ export class RegisterComponent {
     }
   );
 
-  apiUrl: string = environment.apiUrl;
+  registerWithGoogleUrl: string = logInWithGoogleUrl;
 
-  isSubmitButtonDisabled$ = this.registerForm.statusChanges.pipe(
-    map((status) => {
-      console.log({ status });
-      return status === 'INVALID' || status === null;
-    })
-  );
+  isLoading$ = this.loadingService.isLoading$;
+
+  isSubmitButtonDisabled$: Observable<boolean> =
+    this.registerForm.statusChanges.pipe(
+      mergeMap((status) =>
+        this.isLoading$.pipe(
+          map((isLoading) => (isLoading ? 'PENDING' : status))
+        )
+      ),
+      map((status) => ['INVALID', 'PENDING', null].includes(status))
+    );
 
   get fullNameControl(): FormControl {
     return this.registerForm.get('fullName') as FormControl;
@@ -53,7 +59,10 @@ export class RegisterComponent {
     return this.registerForm.get('password') as FormControl;
   }
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private loadingService: LoadingService
+  ) {}
 
   register() {
     const credentials: RegisterCredentials = this.registerForm
@@ -65,5 +74,10 @@ export class RegisterComponent {
         timer(5000).subscribe(() => this.registerForm.setErrors(null));
       },
     });
+  }
+
+  registerWithGoogle() {
+    this.loadingService.markLoading();
+    window.location.assign(this.registerWithGoogleUrl);
   }
 }
