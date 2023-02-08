@@ -38,7 +38,7 @@ export class AuthService {
       switchMap(() => this.handleSuccesfullLogIn()),
       catchError((err: HttpErrorResponse) => {
         console.error({ err, message: err.error.message });
-        return throwError(() => new Error(err.message));
+        return throwError(() => new Error(err.error.message));
       })
     );
   }
