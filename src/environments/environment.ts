@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://users-nestjs-auth-sessions.up.railway.app',
+  apiUrl: 'https://auth-app-nestjs-production.up.railway.app',
 };
