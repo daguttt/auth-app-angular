@@ -34,7 +34,6 @@ export class LoginComponent {
     });
   }
   logInWithGoogle() {
-    this.loadingService.markLoading();
-    window.location.assign(this.logInWithGoogleUrl);
+    this.authService.authenticateWithGoogle();
   }
 }

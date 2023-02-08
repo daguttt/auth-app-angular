@@ -76,6 +76,11 @@ export class AuthService {
     );
   }
 
+  authenticateWithGoogle() {
+    this.loadingService.markLoading();
+    window.location.assign(this.logInWithGoogleUrl);
+  }
+
   logOut(): Observable<never> {
     this.loadingService.markLoading();
     return this.http.delete<never>(`${this.apiUrl}/auth/logout`).pipe(

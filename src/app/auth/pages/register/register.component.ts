@@ -65,7 +65,6 @@ export class RegisterComponent {
   }
 
   registerWithGoogle() {
-    this.loadingService.markLoading();
-    window.location.assign(this.registerWithGoogleUrl);
+    this.authService.authenticateWithGoogle();
   }
 }
