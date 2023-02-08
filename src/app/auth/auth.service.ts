@@ -7,6 +7,7 @@ import {
   EMPTY,
   Observable,
   catchError,
+  finalize,
   ignoreElements,
   map,
   of,
@@ -16,7 +17,7 @@ import {
 } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-
+import { LoadingService } from 'src/app/loading.service';
 import { AuthUser } from './types/auth-user.interface';
 import { LoginCredentials } from './types/login-credentials.interface';
 import { RegisterCredentials } from './types/register-credentials.interface';
@@ -30,12 +31,19 @@ export class AuthService {
   isLoggedIn$ = this.authUser$.pipe(map(Boolean));
 
   apiUrl = environment.apiUrl;
+  logInWithGoogleUrl = `${this.apiUrl}/auth/login/federated/google`;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private loadingService: LoadingService
+  ) {}
 
   logIn(credentials: LoginCredentials): Observable<AuthUser | null> {
+    this.loadingService.markLoading();
     return this.http.post<never>(`${this.apiUrl}/auth/login`, credentials).pipe(
       switchMap(() => this.handleSuccesfullLogIn()),
+      finalize(() => this.loadingService.clearLoading()),
       catchError((err: HttpErrorResponse) => {
         console.error({ err, message: err.error.message });
         return throwError(() => new Error(err.error.message));
@@ -44,11 +52,13 @@ export class AuthService {
   }
 
   register(registerCredentials: RegisterCredentials): Observable<never> {
+    this.loadingService.markLoading();
     return this.http
       .post<never>(`${this.apiUrl}/auth/register`, registerCredentials)
       .pipe(
         switchMap(() => this.handleSuccesfullLogIn()),
         ignoreElements(),
+        finalize(() => this.loadingService.clearLoading()),
         catchError((err: HttpErrorResponse) => {
           console.error({ err, message: err.error.message });
           return throwError(() => new Error(err.error.message));
@@ -67,8 +77,10 @@ export class AuthService {
   }
 
   logOut(): Observable<never> {
+    this.loadingService.markLoading();
     return this.http.delete<never>(`${this.apiUrl}/auth/logout`).pipe(
       tap(() => this.handleLogOut()),
+      finalize(() => this.loadingService.clearLoading()),
       catchError(() => {
         this.handleLogOut();
         return EMPTY;
