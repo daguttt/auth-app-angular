@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Observable, map, mergeMap, timer } from 'rxjs';
+import { timer } from 'rxjs';
 
 import { LoadingService } from 'src/app/loading.service';
 import { validatorsForPasswords } from '../../constants/password-validators';
 import { emailValidators } from '../../constants/email-validators';
 import { AuthService } from '../../auth.service';
 import { RegisterCredentials } from '../../types/register-credentials.interface';
-import { logInWithGoogleUrl } from '../../constants/urls';
 
 @Component({
   selector: 'app-register',
@@ -33,19 +32,7 @@ export class RegisterComponent {
     }
   );
 
-  registerWithGoogleUrl: string = logInWithGoogleUrl;
-
   isLoading$ = this.loadingService.isLoading$;
-
-  isSubmitButtonDisabled$: Observable<boolean> =
-    this.registerForm.statusChanges.pipe(
-      mergeMap((status) =>
-        this.isLoading$.pipe(
-          map((isLoading) => (isLoading ? 'PENDING' : status))
-        )
-      ),
-      map((status) => ['INVALID', 'PENDING', null].includes(status))
-    );
 
   get fullNameControl(): FormControl {
     return this.registerForm.get('fullName') as FormControl;
@@ -65,8 +52,9 @@ export class RegisterComponent {
   ) {}
 
   register() {
-    const credentials: RegisterCredentials = this.registerForm
-      .value as RegisterCredentials;
+    if (this.registerForm.invalid) return;
+
+    const credentials = this.registerForm.value as RegisterCredentials;
     this.authService.register(credentials).subscribe({
       error: (err: Error) => {
         window.alert(err.message);

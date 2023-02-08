@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SubmitButtonComponent } from './components/submit-button/submit-button.component';
 
 const initilizeAppFactory =
   (authService: AuthService): (() => Observable<AuthUser | null>) =>
@@ -26,6 +27,7 @@ const initilizeAppFactory =
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    SubmitButtonComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 <h2>Register</h2>
 <button [disabled]="isLoading$ | async" (click)="registerWithGoogle()">
-  Login with Google
+  Register with Google
 </button>
 <br />
 <br />
@@ -23,12 +23,11 @@
     <p>Password Errors</p>
     <pre>{{ passwordControl.errors | json }}</pre>
   </div>
-  <button type="submit" [disabled]="isSubmitButtonDisabled$ | async">
-    Register
-  </button>
-  <p>Allow button {{ isSubmitButtonDisabled$ | async | json }}</p>
+  <app-submit-button [parentFormGroup]="registerForm" (onSubmit)="register()">
+    Registrarse
+  </app-submit-button>
 </form>
-<p>Errors</p>
+<p>Form Errors</p>
 <pre>{{ registerForm.errors | json }}</pre>
 <br />
 <br />

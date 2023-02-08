@@ -13,9 +13,9 @@
     <label for="password">Password: </label>
     <input type="password" formControlName="password" id="password" />
   </div>
-  <button type="submit" [disabled]="isSubmitButtonDisabled$ | async">
-    Log in
-  </button>
+  <app-submit-button [parentFormGroup]="loginForm" (onSubmit)="logIn()">
+    Log In
+  </app-submit-button>
 </form>
 <br />
 <br />
