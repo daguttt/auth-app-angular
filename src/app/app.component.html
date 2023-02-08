@@ -1,5 +1,9 @@
 <header>
-  <button [style.display]="cannotShowLogOutButton$ | async" (click)="logOut()">
+  <button
+    [style.display]="cannotShowLogOutButton$ | async"
+    [disabled]="isLoading$ | async"
+    (click)="logOut()"
+  >
     Log out
   </button>
 </header>
