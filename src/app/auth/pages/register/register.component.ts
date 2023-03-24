@@ -12,20 +12,14 @@ import { RegisterCredentials } from '../../types/register-credentials.interface'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styles: [
-    `
-      form div {
-        padding: 16px;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class RegisterComponent {
   registerForm = new FormGroup(
     {
-      fullName: new FormControl('Test 1', [Validators.required]),
-      email: new FormControl('test@test1.com', emailValidators),
-      password: new FormControl('Testico1', validatorsForPasswords),
+      fullName: new FormControl('', [Validators.required]),
+      email: new FormControl('', emailValidators),
+      password: new FormControl('', validatorsForPasswords),
     },
     {
       updateOn: 'blur',

@@ -10,16 +10,7 @@ import { ChangePasswordDto } from '../../types/change-password.dto';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styles: [
-    `
-      form div {
-        padding: 24px;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        margin-bottom: 16px;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class UserProfileComponent {
   passwordChangeForm = new FormGroup(

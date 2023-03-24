@@ -1,28 +1,44 @@
-<h2>Profile</h2>
+<nav>
+  <ul>
+    <li>
+      <h2>Profile</h2>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <a routerLink="/">Go to Home</a>
+    </li>
+  </ul>
+</nav>
+<article>
+  <form [formGroup]="passwordChangeForm" (ngSubmit)="onChangePassword()">
+    <h3>Change Password</h3>
+    <!-- New Password -->
+    <div>
+      <label for="newPassword">New Password</label>
+      <input type="text" formControlName="newPassword" id="newPassword" />
+      <span>Errors</span>
+      <pre>{{ newPasswordControl.errors | json }}</pre>
+    </div>
+    <!-- Confirm Password-->
+    <div>
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        type="text"
+        formControlName="confirmPassword"
+        id="confirmPassword"
+      />
+      <span>Errors</span>
+      <pre>{{ confirmPasswordControl.errors | json }}</pre>
+    </div>
+    <!-- Submit -->
+    <button type="submit" [disabled]="passwordChangeForm.invalid">
+      Change password
+    </button>
+  </form>
+  <p><strong>Form Value</strong></p>
+  <pre>{{ passwordChangeForm.value | json }}</pre>
 
-<form [formGroup]="passwordChangeForm" (ngSubmit)="onChangePassword()">
-  <!-- New Password -->
-  <div>
-    <label for="newPassword">New Password</label>
-    <input type="text" formControlName="newPassword" id="newPassword" />
-    <br /><br />
-    <p>Errors</p>
-    <pre>{{ newPasswordControl.errors | json }}</pre>
-  </div>
-  <!-- Confirm Password-->
-  <div>
-    <label for="confirmPassword">Confirm Password</label>
-    <input type="text" formControlName="confirmPassword" id="confirmPassword" />
-    <p>Errors</p>
-    <pre>{{ confirmPasswordControl.errors | json }}</pre>
-  </div>
-  <!-- Submit -->
-  <button type="submit" [disabled]="passwordChangeForm.invalid">
-    Change password
-  </button>
-</form>
-<p>Value</p>
-<pre>{{ passwordChangeForm.value | json }}</pre>
-
-<p>Errors</p>
-<pre>{{ passwordChangeForm.errors | json }}</pre>
+  <p><strong>Form Errors</strong></p>
+  <pre>{{ passwordChangeForm.errors | json }}</pre>
+</article>

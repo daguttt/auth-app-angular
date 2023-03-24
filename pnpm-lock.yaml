@@ -12,6 +12,7 @@ specifiers:
   '@angular/platform-browser': ^15.1.0
   '@angular/platform-browser-dynamic': ^15.1.0
   '@angular/router': ^15.1.0
+  '@picocss/pico': 1.5.7
   '@types/jasmine': ~4.3.0
   jasmine-core: ~4.5.0
   karma: ~6.4.0
@@ -33,6 +34,7 @@ dependencies:
   '@angular/platform-browser': 15.1.0_eifxzngnnnjsj3jgsq7frmjnk4
   '@angular/platform-browser-dynamic': 15.1.0_bjmxt24dowfhcklhftsg4zga3a
   '@angular/router': 15.1.0_shtnd5whtbyicxnxmafd6uxkza
+  '@picocss/pico': 1.5.7
   rxjs: 7.8.0
   tslib: 2.4.1
   zone.js: 0.12.0
@@ -1997,6 +1999,10 @@ packages:
       - bluebird
       - supports-color
     dev: true
+
+  /@picocss/pico/1.5.7:
+    resolution: {integrity: sha512-RygdXNlSXieAs9jMw/AeqA1ki1kldgEYbRn8BnYZIPfRTM5NWZ4uVzMK6uMPhYlRjoT5wD/OplZvIefnCqyDCQ==}
+    dev: false
 
   /@schematics/angular/15.1.1:
     resolution: {integrity: sha512-Ujo4vt/r3WzIhGn2I2Lt3eOTWSsVxoXfcXxFRuxl3cil/9mH1X66hDTQ2DVYiXPFGcQMjcNaDwlQxyor4yGbqA==}

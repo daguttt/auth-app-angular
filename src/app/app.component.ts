@@ -13,7 +13,7 @@ export class AppComponent {
   authUser$ = this.authService.authUser$;
   isLoading$ = this.loadingService.isLoading$;
   cannotShowLogOutButton$ = this.authUser$.pipe(
-    map((user) => (user ? 'inline-block' : 'none'))
+    map((user) => (user ? 'block' : 'none'))
   );
 
   constructor(

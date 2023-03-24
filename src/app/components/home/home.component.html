@@ -1,4 +1,29 @@
-<h2>Home</h2>
-<br />
-<a routerLink="/user/profile">Go to Profile</a>
-<pre>{{ authUser$ | async | json }}</pre>
+<nav>
+  <ul>
+    <li>
+      <h2>Home</h2>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <a routerLink="/user/profile">Go to Profile</a>
+    </li>
+  </ul>
+</nav>
+
+<ng-container *ngIf="authUser$ | async as authUser">
+  <section>
+    <article>
+      <div>
+        <img
+          [src]="authUser.photo ?? '/assets/user-avatar-placeholder.png'"
+          alt="User Photo"
+        />
+      </div>
+      <hgroup>
+        <h3>{{ authUser.fullName }}</h3>
+        <h4>{{ authUser.email }}</h4>
+      </hgroup>
+    </article>
+  </section>
+</ng-container>

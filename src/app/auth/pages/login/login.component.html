@@ -1,22 +1,42 @@
-<h2>Login</h2>
-<button [disabled]="isLoading$ | async" (click)="logInWithGoogle()">
-  Login with Google
-</button>
-<br />
-<br />
-<form [formGroup]="loginForm" (ngSubmit)="logIn()">
-  <div>
-    <label for="email">Email: </label>
-    <input type="email" formControlName="email" id="email" />
+<article>
+  <nav>
+    <ul>
+      <li>
+        <h2>Login</h2>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a routerLink="../register">Go to Register</a>
+      </li>
+    </ul>
+  </nav>
+  <section>
+    <button [disabled]="isLoading$ | async" (click)="logInWithGoogle()">
+      Login with Google
+    </button>
+  </section>
+  <div class="divider">
+    <small class="secondary">or with email</small>
   </div>
-  <div>
-    <label for="password">Password: </label>
-    <input type="password" formControlName="password" id="password" />
-  </div>
-  <app-submit-button [parentFormGroup]="loginForm" (onSubmit)="logIn()">
-    Log In
-  </app-submit-button>
-</form>
-<br />
-<br />
-<a routerLink="../register">Go to Register</a>
+  <form [formGroup]="loginForm" (ngSubmit)="logIn()">
+    <div>
+      <label for="email">Email: </label>
+      <input type="email" formControlName="email" id="email" />
+    </div>
+    <div>
+      <label for="password">Password: </label>
+      <input type="password" formControlName="password" id="password" />
+    </div>
+    <app-submit-button
+      [parentFormGroup]="loginForm"
+      (onSubmit)="logIn()"
+      customClasses="secondary"
+    >
+      Log In
+    </app-submit-button>
+  </form>
+  <p>
+    Don't have an account yet? <a routerLink="../register">Create account</a>
+  </p>
+</article>

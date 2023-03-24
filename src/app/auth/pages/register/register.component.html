@@ -1,34 +1,51 @@
-<h2>Register</h2>
-<button [disabled]="isLoading$ | async" (click)="registerWithGoogle()">
-  Register with Google
-</button>
-<br />
-<br />
-<form [formGroup]="registerForm" (ngSubmit)="register()">
-  <div>
-    <label for="name">Full name: </label>
-    <input type="name" formControlName="fullName" id="name" />
-    <p>Full name Errors</p>
-    <pre>{{ fullNameControl.errors | json }}</pre>
+<article>
+  <nav>
+    <ul>
+      <li>
+        <h2>Register</h2>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a routerLink="../login">Go to Login</a>
+      </li>
+    </ul>
+  </nav>
+  <section>
+    <button [disabled]="isLoading$ | async" (click)="registerWithGoogle()">
+      Register with Google
+    </button>
+  </section>
+  <div class="divider">
+    <small class="secondary">or with email</small>
   </div>
-  <div>
-    <label for="email">Email: </label>
-    <input type="email" formControlName="email" id="email" />
-    <p>Email Errors</p>
-    <pre>{{ emailControl.errors | json }}</pre>
-  </div>
-  <div>
-    <label for="password">Password: </label>
-    <input type="text" formControlName="password" id="password" />
-    <p>Password Errors</p>
-    <pre>{{ passwordControl.errors | json }}</pre>
-  </div>
-  <app-submit-button [parentFormGroup]="registerForm" (onSubmit)="register()">
-    Registrarse
-  </app-submit-button>
-</form>
-<p>Form Errors</p>
-<pre>{{ registerForm.errors | json }}</pre>
-<br />
-<br />
-<a routerLink="../login">Go to Login</a>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div>
+      <label for="name">Full name: </label>
+      <input type="name" formControlName="fullName" id="name" />
+      <span>Full name Errors</span>
+      <pre>{{ fullNameControl.errors | json }}</pre>
+    </div>
+    <div>
+      <label for="email">Email: </label>
+      <input type="email" formControlName="email" id="email" />
+      <span>Email Errors</span>
+      <pre>{{ emailControl.errors | json }}</pre>
+    </div>
+    <div>
+      <label for="password">Password: </label>
+      <input type="text" formControlName="password" id="password" />
+      <span>Password Errors</span>
+      <pre>{{ passwordControl.errors | json }}</pre>
+    </div>
+    <app-submit-button
+      [parentFormGroup]="registerForm"
+      (onSubmit)="register()"
+      customClasses="secondary"
+    >
+      Register
+    </app-submit-button>
+  </form>
+  <p><strong>Form Errors</strong></p>
+  <pre>{{ registerForm.errors | json }}</pre>
+</article>

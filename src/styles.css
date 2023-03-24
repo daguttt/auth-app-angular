@@ -1,1 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+/* -*************************************************************************- */
+/* CUSTOM VARIABLES */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --primary: #039be5;
+    --primary-hover: #03a9f4;
+    --primary-focus: rgba(3, 155, 229, 0.25);
+    --primary-inverse: #fff;
+  }
+}
+
+/* -*************************************************************************- */
+/* SHARED */
+nav :is(h1, h2, h3) {
+  margin-bottom: 0;
+}
+
+.divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--spacing) / 2);
+  margin-bottom: var(--block-spacing-vertical);
+}
+
+.divider:empty {
+  gap: 0;
+}
+
+.divider::before {
+  content: "";
+  height: 1px;
+  flex-grow: 1;
+  background-color: var(--form-element-border-color);
+}
+
+.divider::after {
+  content: "";
+  height: 1px;
+  flex-grow: 1;
+  background-color: var(--form-element-border-color);
+}
+
+pre {
+  padding: var(--spacing);
+}
+
+article:has(form) {
+  display: block;
+  max-width: 600px;
+  margin-inline: auto;
+}
+article:has(form) p:has(strong) {
+  margin-bottom: 0;
+}
+
+/* -*************************************************************************- */
+/* SPECIFIC */
+header {
+  padding: var(--spacing);
+}
+
+app-home article {
+  display: flex;
+  gap: var(--spacing);
+  margin-top: 0;
+}
+
+app-home article img {
+  max-width: 100px;
+}

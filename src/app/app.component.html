@@ -1,10 +1,21 @@
-<header>
-  <button
-    [style.display]="cannotShowLogOutButton$ | async"
-    [disabled]="isLoading$ | async"
-    (click)="logOut()"
-  >
-    Log out
-  </button>
+<header class="container">
+  <nav>
+    <ul>
+      <li><h1>Auth App</h1></li>
+    </ul>
+    <ul>
+      <li>
+        <button
+          [style.display]="cannotShowLogOutButton$ | async"
+          [disabled]="isLoading$ | async"
+          (click)="logOut()"
+        >
+          Log out
+        </button>
+      </li>
+    </ul>
+  </nav>
 </header>
-<router-outlet></router-outlet>
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

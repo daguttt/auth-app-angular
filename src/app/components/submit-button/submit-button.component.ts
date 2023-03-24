@@ -7,6 +7,7 @@ import { LoadingService } from 'src/app/loading.service';
   selector: 'app-submit-button',
   template: `
     <button
+      [ngClass]="customClasses"
       (submit)="onSubmit()"
       type="submit"
       [disabled]="isDisabled$ | async"
@@ -17,6 +18,7 @@ import { LoadingService } from 'src/app/loading.service';
 })
 export class SubmitButtonComponent implements OnInit {
   @Input() parentFormGroup!: FormGroup;
+  @Input() customClasses: string = '';
   @Output('onSubmit') submitEmitter = new EventEmitter();
 
   initialFormStatus: FormControlStatus = 'PENDING';
