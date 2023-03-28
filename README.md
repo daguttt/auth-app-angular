@@ -1,27 +1,46 @@
 # AuthApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
+## Description 📑
 
-## Development server
+Responsive **SPA** that consumes [Auth App Nest](https://github.com/daguttt/auth-app-nestjs/tree/v0.2.0) specifically _"v0.2.0 - Server sessions with cookies"_
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Desktop
+  <a href='https://auth-app-angular.vercel.app/auth/login' style='display: block;'>
+  <img
+      src='https://res.cloudinary.com/doju0qq96/image/upload/v1679676339/auth-app-angular-desktop_bd8vpy.png'
+      alt='Auth App Desktop Image Previw'
+      style='max-width: 400px' />
+  </a>
 
-## Code scaffolding
+- Mobile
+  <a href='https://auth-app-angular.vercel.app/auth/login' style='display: block;'>
+  <img
+      src='https://res.cloudinary.com/doju0qq96/image/upload/v1679676669/auth-app-angular-mobile_cr7lk2.png'
+      alt='Auth App Mobile Image Previw'
+      style='max-height: 350px' />
+  </a>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Live Example 🧬
 
-## Build
+- **[Auth App](https://auth-app-angular.vercel.app/auth/login)**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Features 🔍
 
-## Running unit tests
+- Login/Register with Google
+- Login/Register with Email and Password
+- Password changing
+- Server sessions with Cookies
+- Dark and light themes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Tech Recipe 🖥️
 
-## Running end-to-end tests
+- [NestJS](https://docs.nestjs.com/) 9.0.0
+- [Angular](https://angular.io/) 15.1.0
+- [Railway](https://railway.app/) to deploy [Backend](https://github.com/daguttt/auth-app-nestjs/tree/v0.2.0)
+- [PostgreSQL](https://www.postgresql.org/) deployed in [Railway](https://railway.app/)
+- Alternative faster package manager: [pnpm](https://pnpm.io/).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Social
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [Linkedin](https://linkedin.com/in/daguttt)
+- [Twitter](https://twitter.com/daguttt)
