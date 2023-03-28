@@ -4,21 +4,27 @@
 
 Responsive **SPA** that consumes [Auth App Nest](https://github.com/daguttt/auth-app-nestjs/tree/v0.2.0) specifically _"v0.2.0 - Server sessions with cookies"_
 
-- Desktop
-  <a href='https://auth-app-angular.vercel.app/auth/login' style='display: block;'>
-  <img
+Desktop:
+
+<a href='https://auth-app-angular.vercel.app/auth/login'>
+<img
       src='https://res.cloudinary.com/doju0qq96/image/upload/v1679676339/auth-app-angular-desktop_bd8vpy.png'
       alt='Auth App Desktop Image Previw'
-      style='max-width: 400px' />
-  </a>
+      height='250px'
+      align='center'
+     />
+</a>
 
-- Mobile
-  <a href='https://auth-app-angular.vercel.app/auth/login' style='display: block;'>
-  <img
-      src='https://res.cloudinary.com/doju0qq96/image/upload/v1679676669/auth-app-angular-mobile_cr7lk2.png'
-      alt='Auth App Mobile Image Previw'
-      style='max-height: 350px' />
-  </a>
+Mobile:
+
+<a href='https://auth-app-angular.vercel.app/auth/login'>
+<img
+    src='https://res.cloudinary.com/doju0qq96/image/upload/v1679676669/auth-app-angular-mobile_cr7lk2.png'
+    alt='Auth App Mobile Image Previw'
+    height='300px'
+    align='center'
+     />
+</a>
 
 ## Live Example 🧬
 
