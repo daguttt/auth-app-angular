@@ -33,7 +33,6 @@ export class FormErrorMsgComponent implements OnInit {
     const msg =
       errorsDictionary[this.errorCode] ??
       `Hay un error en el campo. (code: ${this.errorCode}`;
-    console.log({ msg });
     this.errorMsg = msg;
   }
 }
