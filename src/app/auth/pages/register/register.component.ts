@@ -8,6 +8,7 @@ import { passwordValidators } from '../../constants/password-validators';
 import { emailValidators } from '../../constants/email-validators';
 import { AuthService } from '../../auth.service';
 import { RegisterCredentials } from '../../types/register-credentials.interface';
+import { getFormControlStatus } from '../../helpers';
 
 @Component({
   selector: 'app-register',
@@ -23,17 +24,17 @@ export class RegisterComponent {
 
   isLoading$ = this.loadingService.isLoading$;
 
-  get fullNameControl(): FormControl {
-    return this.registerForm.get('fullName') as FormControl;
-  }
+  fullNameControlStatus$ = getFormControlStatus(
+    this.registerForm.get('fullName') as FormControl
+  );
 
-  get emailControl(): FormControl {
-    return this.registerForm.get('email') as FormControl;
-  }
+  emailControlStatus$ = getFormControlStatus(
+    this.registerForm.get('email') as FormControl
+  );
 
-  get passwordControl(): FormControl {
-    return this.registerForm.get('password') as FormControl;
-  }
+  passwordControlStatus$ = getFormControlStatus(
+    this.registerForm.get('password') as FormControl
+  );
 
   constructor(
     private authService: AuthService,

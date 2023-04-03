@@ -22,21 +22,44 @@
   <form [formGroup]="registerForm" (ngSubmit)="register()">
     <div>
       <label for="name">Full name: </label>
-      <input type="name" formControlName="fullName" id="name" />
-      <span>Full name Errors</span>
-      <pre>{{ fullNameControl.errors | json }}</pre>
+      <input
+        type="name"
+        formControlName="fullName"
+        id="name"
+        [attr.aria-invalid]="fullNameControlStatus$ | async"
+      />
+      <app-form-errors-container [forControl]="registerForm.get('fullName')">
+        <app-form-error-msg errorCode="required"></app-form-error-msg>
+      </app-form-errors-container>
     </div>
     <div>
       <label for="email">Email: </label>
-      <input type="email" formControlName="email" id="email" />
-      <span>Email Errors</span>
-      <pre>{{ emailControl.errors | json }}</pre>
+      <input
+        type="email"
+        formControlName="email"
+        id="email"
+        [attr.aria-invalid]="emailControlStatus$ | async"
+      />
+      <app-form-errors-container [forControl]="registerForm.get('email')">
+        <app-form-error-msg errorCode="required"></app-form-error-msg>
+        <app-form-error-msg errorCode="email"></app-form-error-msg>
+      </app-form-errors-container>
     </div>
     <div>
       <label for="password">Password: </label>
-      <input type="text" formControlName="password" id="password" />
-      <span>Password Errors</span>
-      <pre>{{ passwordControl.errors | json }}</pre>
+      <input
+        type="password"
+        formControlName="password"
+        id="password"
+        [attr.aria-invalid]="passwordControlStatus$ | async"
+      />
+      <app-form-errors-container [forControl]="registerForm.get('password')">
+        <app-form-error-msg errorCode="required"></app-form-error-msg>
+        <app-form-error-msg
+          errorCode="passwordMustMatchValidFormat"
+          customMsg="Al menos una mayúscula, un número y 8 o más caracteres"
+        ></app-form-error-msg>
+      </app-form-errors-container>
     </div>
     <app-submit-button
       [parentFormGroup]="registerForm"
@@ -46,6 +69,5 @@
       Register
     </app-submit-button>
   </form>
-  <p><strong>Form Errors</strong></p>
-  <pre>{{ registerForm.errors | json }}</pre>
+  <p>Have an account? <a routerLink="../login">Login using your account</a></p>
 </article>
