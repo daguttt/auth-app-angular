@@ -1,6 +1,7 @@
 import { Validators } from '@angular/forms';
+import { passwordMustMatchValidFormat } from '../validators/password-must-match-valid-format.validator';
 
-export const validatorsForPasswords = [
+export const passwordValidators = [
   Validators.required,
-  Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}/),
+  passwordMustMatchValidFormat,
 ];

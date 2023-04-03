@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { timer } from 'rxjs';
 
 import { LoadingService } from 'src/app/loading.service';
-import { validatorsForPasswords } from '../../constants/password-validators';
+import { passwordValidators } from '../../constants/password-validators';
 import { emailValidators } from '../../constants/email-validators';
 import { AuthService } from '../../auth.service';
 import { RegisterCredentials } from '../../types/register-credentials.interface';
@@ -15,16 +15,11 @@ import { RegisterCredentials } from '../../types/register-credentials.interface'
   styles: [],
 })
 export class RegisterComponent {
-  registerForm = new FormGroup(
-    {
-      fullName: new FormControl('', [Validators.required]),
-      email: new FormControl('', emailValidators),
-      password: new FormControl('', validatorsForPasswords),
-    },
-    {
-      updateOn: 'blur',
-    }
-  );
+  registerForm = new FormGroup({
+    fullName: new FormControl('', [Validators.required]),
+    email: new FormControl('', emailValidators),
+    password: new FormControl('', passwordValidators),
+  });
 
   isLoading$ = this.loadingService.isLoading$;
 

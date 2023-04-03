@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { passwordsMustBeEqual } from 'src/app/auth/validators/passwords-must-be-equal.validator';
-import { validatorsForPasswords } from 'src/app/auth/constants/password-validators';
+import { passwordValidators } from 'src/app/auth/constants/password-validators';
 
 import { UserService } from '../../user.service';
 import { ChangePasswordDto } from '../../types/change-password.dto';
@@ -15,8 +15,8 @@ import { ChangePasswordDto } from '../../types/change-password.dto';
 export class UserProfileComponent {
   passwordChangeForm = new FormGroup(
     {
-      newPassword: new FormControl('', validatorsForPasswords),
-      confirmPassword: new FormControl('', validatorsForPasswords),
+      newPassword: new FormControl('', passwordValidators),
+      confirmPassword: new FormControl('', passwordValidators),
     },
     {
       validators: [passwordsMustBeEqual],
