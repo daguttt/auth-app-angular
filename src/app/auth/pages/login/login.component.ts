@@ -6,6 +6,7 @@ import { LoadingService } from 'src/app/loading.service';
 import { emailValidators } from '../../constants/email-validators';
 import { passwordValidators } from '../../constants/password-validators';
 import { LoginCredentials } from '../../types/login-credentials.interface';
+import { getFormControlStatus } from '../../helpers';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,14 @@ export class LoginComponent {
     email: new FormControl('', emailValidators),
     password: new FormControl('', passwordValidators),
   });
+
+  emailControlStatus$ = getFormControlStatus(
+    this.loginForm.get('email') as FormControl
+  );
+
+  passwordControlStatus$ = getFormControlStatus(
+    this.loginForm.get('password') as FormControl
+  );
 
   isLoading$ = this.loadingService.isLoading$;
 

@@ -54,6 +54,15 @@ article:has(form) p:has(strong) {
   margin-bottom: 0;
 }
 
+:where(input, select, textarea, .grid) + app-form-errors-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: calc(var(--spacing) * -0.75);
+  margin-bottom: var(--spacing);
+  color: var(--form-element-invalid-border-color);
+}
+
 /* -*************************************************************************- */
 /* SPECIFIC */
 header {

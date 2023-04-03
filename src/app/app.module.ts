@@ -5,6 +5,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
+import { FormExtensionsModule } from './form-extensions';
+
 import { AuthHeaderInterceptor } from './auth/interceptors/auth-header.interceptor';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { LoginComponent } from './auth/pages/login/login.component';
@@ -34,6 +36,7 @@ const initilizeAppFactory =
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormExtensionsModule,
   ],
   providers: [
     {

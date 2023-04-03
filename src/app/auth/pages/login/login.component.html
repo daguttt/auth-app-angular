@@ -20,13 +20,35 @@
     <small class="secondary">or with email</small>
   </div>
   <form [formGroup]="loginForm" (ngSubmit)="logIn()">
+    <!-- Email -->
     <div>
       <label for="email">Email: </label>
-      <input type="email" formControlName="email" id="email" />
+      <input
+        type="email"
+        formControlName="email"
+        id="email"
+        [attr.aria-invalid]="emailControlStatus$ | async"
+      />
+      <app-form-errors-container [forControl]="loginForm.get('email')">
+        <app-form-error-msg errorCode="required"></app-form-error-msg>
+        <app-form-error-msg errorCode="email"></app-form-error-msg>
+      </app-form-errors-container>
     </div>
+    <!-- Password -->
     <div>
       <label for="password">Password: </label>
-      <input type="password" formControlName="password" id="password" />
+      <input
+        type="password"
+        formControlName="password"
+        id="password"
+        [attr.aria-invalid]="passwordControlStatus$ | async"
+      />
+      <app-form-errors-container [forControl]="loginForm.get('password')">
+        <app-form-error-msg errorCode="required"></app-form-error-msg>
+        <app-form-error-msg
+          errorCode="passwordMustMatchValidFormat"
+        ></app-form-error-msg>
+      </app-form-errors-container>
     </div>
     <app-submit-button
       [parentFormGroup]="loginForm"
