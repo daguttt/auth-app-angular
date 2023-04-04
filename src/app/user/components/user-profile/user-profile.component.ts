@@ -39,7 +39,7 @@ export class UserProfileComponent {
       .value as ChangePasswordDto;
     this.userService.changePassword(changePasswordDto).subscribe({
       next: () => {
-        this.passwordChangeForm.reset();
+        this.passwordChangeForm.reset({}, { emitEvent: false });
         window.alert('Contraseña cambiada correctamente');
       },
       error: () => this.passwordChangeForm.setErrors({ unExpectedError: true }),
