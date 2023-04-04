@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Attribute,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControlStatus, FormGroup } from '@angular/forms';
 import { Observable, map, mergeMap, startWith } from 'rxjs';
 import { LoadingService } from 'src/app/loading.service';
@@ -20,18 +27,22 @@ import { LoadingService } from 'src/app/loading.service';
   `,
 })
 export class SubmitButtonComponent implements OnInit {
-  @Input() parentFormGroup!: FormGroup;
-  @Output('onSubmit') submitEmitter = new EventEmitter();
+  @Input() parentFormGroup?: FormGroup;
+  @Output('submitted') submitEmitter = new EventEmitter();
 
   initialFormStatus: FormControlStatus = 'PENDING';
 
   isLoading$ = this.loadingService.isLoading$;
-  isDisabled$!: Observable<boolean>;
 
-  constructor(private loadingService: LoadingService) {}
+  isDisabled$?: Observable<boolean>;
+
+  constructor(
     @Attribute('customClasses') public customClasses: string = '',
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit(): void {
+    if (!this.parentFormGroup) return;
     this.initialFormStatus = this.parentFormGroup.status;
     this.isDisabled$ = this.parentFormGroup.statusChanges.pipe(
       startWith(this.initialFormStatus),

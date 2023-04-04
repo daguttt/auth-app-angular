@@ -52,7 +52,7 @@
     </div>
     <app-submit-button
       [parentFormGroup]="loginForm"
-      (onSubmit)="logIn()"
+      (submitted)="logIn()"
       customClasses="secondary"
     >
       Log In

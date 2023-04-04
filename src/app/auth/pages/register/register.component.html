@@ -63,7 +63,7 @@
     </div>
     <app-submit-button
       [parentFormGroup]="registerForm"
-      (onSubmit)="register()"
+      (submitted)="register()"
       customClasses="secondary"
     >
       Register
