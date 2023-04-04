@@ -42,7 +42,10 @@ export class SubmitButtonComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (!this.parentFormGroup) return;
+    if (!this.parentFormGroup) {
+      console.error("Expecting parent FormGroup. It wasn't input");
+      return;
+    }
     this.initialFormStatus = this.parentFormGroup.status;
     this.isDisabled$ = this.parentFormGroup.statusChanges.pipe(
       startWith(this.initialFormStatus),
