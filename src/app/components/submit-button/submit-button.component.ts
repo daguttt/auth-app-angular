@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControlStatus, FormGroup } from '@angular/forms';
 import { Observable, map, mergeMap, startWith } from 'rxjs';
@@ -5,6 +6,8 @@ import { LoadingService } from 'src/app/loading.service';
 
 @Component({
   selector: 'app-submit-button',
+  standalone: true,
+  imports: [CommonModule],
   template: `
     <button
       [ngClass]="customClasses"

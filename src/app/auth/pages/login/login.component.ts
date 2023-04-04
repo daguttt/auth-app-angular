@@ -6,7 +6,7 @@ import { LoadingService } from 'src/app/loading.service';
 import { emailValidators } from '../../constants/email-validators';
 import { passwordValidators } from '../../constants/password-validators';
 import { LoginCredentials } from '../../types/login-credentials.interface';
-import { getFormControlStatus } from '../../helpers';
+import { getFormControlStatus } from '../../../helpers';
 
 @Component({
   selector: 'app-login',

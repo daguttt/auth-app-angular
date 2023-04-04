@@ -29,7 +29,6 @@ const initilizeAppFactory =
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    SubmitButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +36,7 @@ const initilizeAppFactory =
     ReactiveFormsModule,
     HttpClientModule,
     FormExtensionsModule,
+    SubmitButtonComponent,
   ],
   providers: [
     {

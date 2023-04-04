@@ -6,6 +6,7 @@ import { passwordValidators } from 'src/app/auth/constants/password-validators';
 
 import { UserService } from '../../user.service';
 import { ChangePasswordDto } from '../../types/change-password.dto';
+import { getFormControlStatus } from 'src/app/helpers';
 
 @Component({
   selector: 'app-user-profile',
@@ -20,17 +21,16 @@ export class UserProfileComponent {
     },
     {
       validators: [passwordsMustBeEqual],
-      updateOn: 'blur',
     }
   );
 
-  get newPasswordControl(): FormControl {
-    return this.passwordChangeForm.get('newPassword') as FormControl;
-  }
+  newPasswordControlStatus$ = getFormControlStatus(
+    this.passwordChangeForm.get('newPassword') as FormControl
+  );
 
-  get confirmPasswordControl(): FormControl {
-    return this.passwordChangeForm.get('confirmPassword') as FormControl;
-  }
+  confirmPasswordControlStatus$ = getFormControlStatus(
+    this.passwordChangeForm.get('confirmPassword') as FormControl
+  );
 
   constructor(private userService: UserService) {}
 

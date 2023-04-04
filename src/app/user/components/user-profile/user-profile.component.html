@@ -16,9 +16,20 @@
     <!-- New Password -->
     <div>
       <label for="newPassword">New Password</label>
-      <input type="text" formControlName="newPassword" id="newPassword" />
-      <span>Errors</span>
-      <pre>{{ newPasswordControl.errors | json }}</pre>
+      <input
+        type="text"
+        formControlName="newPassword"
+        id="newPassword"
+        [attr.aria-invalid]="newPasswordControlStatus$ | async"
+      />
+      <app-form-errors-container
+        [forControl]="passwordChangeForm.get('newPassword')"
+      >
+        <app-form-error-msg errorCode="required"></app-form-error-msg>
+        <app-form-error-msg
+          errorCode="passwordMustMatchValidFormat"
+        ></app-form-error-msg>
+      </app-form-errors-container>
     </div>
     <!-- Confirm Password-->
     <div>
@@ -27,18 +38,20 @@
         type="text"
         formControlName="confirmPassword"
         id="confirmPassword"
+        [attr.aria-invalid]="confirmPasswordControlStatus$ | async"
       />
-      <span>Errors</span>
-      <pre>{{ confirmPasswordControl.errors | json }}</pre>
+      <app-form-errors-container
+        [forControl]="passwordChangeForm.get('confirmPassword')"
+      >
+        <app-form-error-msg errorCode="required"></app-form-error-msg>
+        <app-form-error-msg
+          errorCode="passwordMustMatchValidFormat"
+        ></app-form-error-msg>
+      </app-form-errors-container>
     </div>
     <!-- Submit -->
-    <button type="submit" [disabled]="passwordChangeForm.invalid">
+    <app-submit-button [parentFormGroup]="passwordChangeForm">
       Change password
-    </button>
+    </app-submit-button>
   </form>
-  <p><strong>Form Value</strong></p>
-  <pre>{{ passwordChangeForm.value | json }}</pre>
-
-  <p><strong>Form Errors</strong></p>
-  <pre>{{ passwordChangeForm.errors | json }}</pre>
 </article>
