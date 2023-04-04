@@ -21,7 +21,6 @@ import { LoadingService } from 'src/app/loading.service';
 })
 export class SubmitButtonComponent implements OnInit {
   @Input() parentFormGroup!: FormGroup;
-  @Input() customClasses: string = '';
   @Output('onSubmit') submitEmitter = new EventEmitter();
 
   initialFormStatus: FormControlStatus = 'PENDING';
@@ -30,6 +29,7 @@ export class SubmitButtonComponent implements OnInit {
   isDisabled$!: Observable<boolean>;
 
   constructor(private loadingService: LoadingService) {}
+    @Attribute('customClasses') public customClasses: string = '',
 
   ngOnInit(): void {
     this.initialFormStatus = this.parentFormGroup.status;
