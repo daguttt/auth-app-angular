@@ -29,7 +29,7 @@
         [attr.aria-invalid]="fullNameControlStatus$ | async"
       />
       <app-form-errors-container [forControl]="registerForm.get('fullName')">
-        <app-form-error-msg errorCode="required"></app-form-error-msg>
+        <app-form-error-msg data-error-code="required"></app-form-error-msg>
       </app-form-errors-container>
     </div>
     <div>
@@ -41,8 +41,8 @@
         [attr.aria-invalid]="emailControlStatus$ | async"
       />
       <app-form-errors-container [forControl]="registerForm.get('email')">
-        <app-form-error-msg errorCode="required"></app-form-error-msg>
-        <app-form-error-msg errorCode="email"></app-form-error-msg>
+        <app-form-error-msg data-error-code="required"></app-form-error-msg>
+        <app-form-error-msg data-error-code="email"></app-form-error-msg>
       </app-form-errors-container>
     </div>
     <div>
@@ -54,17 +54,17 @@
         [attr.aria-invalid]="passwordControlStatus$ | async"
       />
       <app-form-errors-container [forControl]="registerForm.get('password')">
-        <app-form-error-msg errorCode="required"></app-form-error-msg>
+        <app-form-error-msg data-error-code="required"></app-form-error-msg>
         <app-form-error-msg
-          errorCode="passwordMustMatchValidFormat"
-          customMsg="Al menos una mayúscula, un número y 8 o más caracteres"
+          data-error-code="passwordMustMatchValidFormat"
+          data-custom-msg="Al menos una mayúscula, un número y 8 o más caracteres"
         ></app-form-error-msg>
       </app-form-errors-container>
     </div>
     <app-submit-button
       [parentFormGroup]="registerForm"
       (submitted)="register()"
-      customClasses="secondary"
+      data-class="secondary"
     >
       Register
     </app-submit-button>

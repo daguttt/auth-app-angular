@@ -30,8 +30,8 @@
         [attr.aria-invalid]="emailControlStatus$ | async"
       />
       <app-form-errors-container [forControl]="loginForm.get('email')">
-        <app-form-error-msg errorCode="required"></app-form-error-msg>
-        <app-form-error-msg errorCode="email"></app-form-error-msg>
+        <app-form-error-msg data-error-code="required"></app-form-error-msg>
+        <app-form-error-msg data-error-code="email"></app-form-error-msg>
       </app-form-errors-container>
     </div>
     <!-- Password -->
@@ -44,16 +44,16 @@
         [attr.aria-invalid]="passwordControlStatus$ | async"
       />
       <app-form-errors-container [forControl]="loginForm.get('password')">
-        <app-form-error-msg errorCode="required"></app-form-error-msg>
+        <app-form-error-msg data-error-code="required"></app-form-error-msg>
         <app-form-error-msg
-          errorCode="passwordMustMatchValidFormat"
+          data-error-code="passwordMustMatchValidFormat"
         ></app-form-error-msg>
       </app-form-errors-container>
     </div>
     <app-submit-button
       [parentFormGroup]="loginForm"
       (submitted)="logIn()"
-      customClasses="secondary"
+      data-class="secondary"
     >
       Log In
     </app-submit-button>

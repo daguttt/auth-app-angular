@@ -25,9 +25,9 @@
       <app-form-errors-container
         [forControl]="passwordChangeForm.get('newPassword')"
       >
-        <app-form-error-msg errorCode="required"></app-form-error-msg>
+        <app-form-error-msg data-error-code="required"></app-form-error-msg>
         <app-form-error-msg
-          errorCode="passwordMustMatchValidFormat"
+          data-error-code="passwordMustMatchValidFormat"
         ></app-form-error-msg>
       </app-form-errors-container>
     </div>
@@ -43,9 +43,9 @@
       <app-form-errors-container
         [forControl]="passwordChangeForm.get('confirmPassword')"
       >
-        <app-form-error-msg errorCode="required"></app-form-error-msg>
+        <app-form-error-msg data-error-code="required"></app-form-error-msg>
         <app-form-error-msg
-          errorCode="passwordMustMatchValidFormat"
+          data-error-code="passwordMustMatchValidFormat"
         ></app-form-error-msg>
       </app-form-errors-container>
     </div>

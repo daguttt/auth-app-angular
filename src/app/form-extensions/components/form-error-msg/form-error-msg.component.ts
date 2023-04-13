@@ -15,8 +15,8 @@ export class FormErrorMsgComponent implements OnInit {
 
   constructor(
     @Host() private errorsContainer: FormErrorsContainerComponent,
-    @Attribute('errorCode') public errorCode: string = '',
-    @Attribute('customMsg') public customMsg: string | null = null
+    @Attribute('data-error-code') public errorCode: string = '',
+    @Attribute('data-custom-msg') public customMsg: string | null = null
   ) {
     this.setErrorMsg();
   }

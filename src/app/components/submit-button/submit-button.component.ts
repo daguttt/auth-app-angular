@@ -37,7 +37,7 @@ export class SubmitButtonComponent implements OnInit {
   isDisabled$?: Observable<boolean>;
 
   constructor(
-    @Attribute('customClasses') public customClasses: string = '',
+    @Attribute('data-class') public customClasses: string = '',
     private loadingService: LoadingService
   ) {}
 
